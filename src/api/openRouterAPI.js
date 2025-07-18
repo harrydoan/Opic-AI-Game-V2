@@ -12,7 +12,7 @@ export const callOpenRouterAPI = async (prompt, model) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: model || 'openchat/openchat-3.5-turbo',
+        model: model || 'openai/gpt-3.5-turbo',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.7,
         max_tokens: 1000
