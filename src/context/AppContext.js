@@ -5,7 +5,7 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [activeTab, setActiveTab] = useState('Nhập liệu');
   const [sentenceData, setSentenceData] = useState([]);
-  const [selectedModel, setSelectedModel] = useState('openchat/openchat-3.5');
+  const [selectedModel, setSelectedModel] = useState('openchat/openchat-3.5-turbo');
   const [opicText, setOpicText] = useState('');
   
   // STATE MỚI: Lưu lại thứ tự đúng do người dùng sắp xếp

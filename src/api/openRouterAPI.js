@@ -12,7 +12,7 @@ export const callOpenRouterAPI = async (prompt, model) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: model || 'openchat/openchat-3.5',
+        model: model || 'openchat/openchat-3.5-turbo',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.7,
         max_tokens: 1000
@@ -20,13 +20,20 @@ export const callOpenRouterAPI = async (prompt, model) => {
     });
 
     if (!response.ok) {
-      throw new Error(`API call failed with status: ${response.status}`);
+      let errorMsg = `API call failed with status: ${response.status}`;
+      try {
+        const errorData = await response.json();
+        if (errorData && errorData.error && errorData.error.message) {
+          errorMsg += ` - ${errorData.error.message}`;
+        }
+      } catch {}
+      throw new Error(errorMsg);
     }
 
     const data = await response.json();
     return data.choices[0].message.content;
   } catch (error) {
     console.error("Error calling OpenRouter API:", error);
-    return "Đã xảy ra lỗi khi kết nối với AI. Vui lòng thử lại sau.";
+    return `Đã xảy ra lỗi khi kết nối với AI. Mã lỗi: ${error.message}`;
   }
 };
