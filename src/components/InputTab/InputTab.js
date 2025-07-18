@@ -60,6 +60,9 @@ Only output the question and the answer. Do not include any introductions, label
   };
 
   const models = [
+    { id: 'openchat/openchat-3.5', name: 'OpenChat: openchat-3.5 (Miễn phí, mặc định)' },
+    { id: 'openchat/openchat-3.5-0106', name: 'OpenChat: openchat-3.5-0106 (Miễn phí)' },
+    { id: 'meta-llama/llama-3-8b-instruct', name: 'Meta: Llama-3-8B-Instruct (Miễn phí)' },
     { id: 'openai/gpt-4o-mini', name: 'OpenAI: GPT-4o Mini (Cân bằng)' },
     { id: 'google/gemini-flash-1.5', name: 'Google: Gemini 1.5 Flash (Nhanh)' },
     { id: 'anthropic/claude-3.5-sonnet', name: 'Anthropic: Claude 3.5 Sonnet (Mạnh mẽ)' },

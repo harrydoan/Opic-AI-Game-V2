@@ -1,8 +1,9 @@
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 const API_KEY = process.env.REACT_APP_OPENROUTER_API_KEY;
-const MODEL = 'openai/gpt-4o-mini';
+// MODEL mặc định không còn dùng ở đây, sẽ truyền từ component
+// const MODEL = 'openai/gpt-4o-mini';
 
-export const callOpenRouterAPI = async (prompt) => {
+export const callOpenRouterAPI = async (prompt, model) => {
   try {
     const response = await fetch(API_URL, {
       method: 'POST',
@@ -11,7 +12,7 @@ export const callOpenRouterAPI = async (prompt) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: MODEL,
+        model: model || 'openchat/openchat-3.5',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.7,
         max_tokens: 1000
